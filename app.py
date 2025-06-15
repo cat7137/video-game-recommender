@@ -3,30 +3,9 @@ import streamlit as st
 import requests
 import os
 
-os.makedirs('artifacts', exist_ok=True)
-
-def download_file_if_not_exists(url, local_path):
-    if not os.path.exists(local_path):
-        response = requests.get(url)
-        if response.status_code == 200:
-            with open(local_path, 'wb') as f:
-                f.write(response.content)
-        else:
-            st.error(f"Failed to download {local_path}. HTTP Status: {response.status_code}")
-
-video_game_list_url = "https://video-game-recommender.s3.us-east-2.amazonaws.com/artifacts/video_game_list.pkl"
-similarity_url = "https://video-game-recommender.s3.us-east-2.amazonaws.com/artifacts/similarity.pkl"
-
-video_game_list_local_path = 'artifacts/video_game_list.pkl'
-similarity_local_path = 'artifacts/similarity.pkl'
-
-download_file_if_not_exists(video_game_list_url, video_game_list_local_path)
-download_file_if_not_exists(similarity_url, similarity_local_path)
-
-
 st.header('Video Game Recommendation System Using Machine Learning')
-video_games = pickle.load(open(video_game_list_local_path, 'rb'))
-similarity_score = pickle.load(open(similarity_local_path, 'rb'))
+video_games = pickle.load(open('artifacts/video_game_list.pkl', 'rb'))
+similarity_score = pickle.load(open('artifacts/similarity.pkl', 'rb'))
 
 video_game_list = video_games['name'].values
 selected_vg = st.selectbox(
