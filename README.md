@@ -1,6 +1,8 @@
-Video Game Recommendation System
+## Video Game Recommendation System Using Machine Learning
+This small application was made to practice machine learning techniques in order to recommend video games
+based on the video game selected. 
 
-PKL files are too big to be able to run on heroku so in order to use you must run the application locally.
+**PKL files are too big to be able to run on heroku so in order to use you must run the application locally.
 
 **Known bug - there are some duplicates when you get the recommendations
 
